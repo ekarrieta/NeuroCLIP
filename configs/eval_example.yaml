@@ -1,0 +1,7 @@
+# Point this at a directory containing best_model.pth and run_config.yaml.
+checkpoint_dir: checkpoints/gwilliams2022/example-wav2vec2-cnn
+split: test
+batch_size: 1000
+num_workers: 4
+seed: 2036
+device: auto

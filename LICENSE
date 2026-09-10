@@ -1,0 +1,19 @@
+NeuroCLIP is licensed under the Creative Commons
+Attribution-NonCommercial 4.0 International license (CC BY-NC 4.0).
+
+You may share and adapt this material for non-commercial purposes provided that
+you give appropriate credit, link to the license, and indicate whether changes
+were made.
+
+License summary: https://creativecommons.org/licenses/by-nc/4.0/
+Legal code: https://creativecommons.org/licenses/by-nc/4.0/legalcode
+
+Parts of models/common.py, models/meg_encoder.py, and models/losses.py are
+adapted from Meta's BrainMagick project:
+
+- Source: https://github.com/facebookresearch/brainmagick
+- Paper: Alexandre Défossez, Charlotte Caucheteux, Jérémy Rapin, Ori Kabeli,
+  and Jean-Rémi King, "Decoding speech perception from non-invasive brain
+  recordings," Nature Machine Intelligence (2023).
+- License: Creative Commons Attribution-NonCommercial 4.0 International,
+  https://creativecommons.org/licenses/by-nc/4.0/

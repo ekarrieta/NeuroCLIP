@@ -1,0 +1,51 @@
+# @package _global_
+
+# Overall
+in_channels:
+  meg: 208 # Will be overriden by dataset config (number of loaded MEG channels)
+out_channels: 1024
+n_subjects: 27 # Will be overriden by dataset config
+hidden:
+  meg: 320
+concatenate : False
+depth : 10
+linear_out : False
+complex_out : True
+# Conv layer
+kernel_size : 3
+dilation_growth : 2
+dilation_period : 5
+skip : True
+post_skip : False
+growth : 1.0
+scale : # if not none, layer scale init value
+rewrite : False # 1x1 conv layer in residual branch
+groups : 1
+glu : 2
+glu_context : 1
+glu_glu : True
+gelu : True
+# Dropouts, BN, activations
+conv_dropout : 0.0
+dropout_input : 0.0
+batch_norm : True
+relu_leakiness : 0.0
+# Subject specific settings
+subject_dim : 0
+subject_layers : True
+embedding_scale : 1.0
+subject_layers_dim : input # input or hidden
+subject_layers_id : False # init to identity subject layer
+# Attention multi-dataset support
+merger : True
+merger_pos_dim : 2048
+merger_channels : 270
+merger_dropout : 0.2
+merger_penalty : 0.0
+merger_per_subject : False
+dropout : 0.0
+dropout_rescale : True
+# Initial settings
+initial_linear : 270
+initial_depth : 1
+initial_nonlin : False

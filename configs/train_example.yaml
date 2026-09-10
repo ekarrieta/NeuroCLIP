@@ -1,0 +1,20 @@
+# Values here are defaults; command-line flags override them.
+dataset: gwilliams2022
+name: example-wav2vec2-cnn
+length: 3.0
+model: cnn
+feature_type: wav2vec2
+epochs: 20
+early_stop: 3
+learning_rate: 0.0003
+weight_decay: 0.0
+batch_size: 256
+eval_batch_size: 1000
+num_workers: 4
+seed: 2036
+dropout: 0.2
+num_layers: 6
+hidden: 320
+num_heads: 8
+device: auto
+final_eval: true

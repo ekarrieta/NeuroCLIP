@@ -1,0 +1,63 @@
+# Python
+__pycache__/
+*.py[cod]
+*.so
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+.venv/
+venv/
+
+# Local credentials and machine-specific settings
+.env
+.env.*
+!.env.example
+.codex
+.agents/
+
+# Datasets, generated caches, and run artifacts
+data/
+cache/
+checkpoints/
+outputs/
+results/
+logs/
+wandb/
+analysis_results/
+*.npy
+*.npz
+*.pkl
+*.pth
+*.pt
+*.ckpt
+
+# Local research and exploratory material
+analyzer.py
+analysis/
+figures/
+visualizer/
+neural_contributions/
+reconstruction_exp/
+old/
+scripts/
+slurm/
+to_move/
+*.ipynb
+*.slurm
+models/encoders.py
+
+!examples/
+!examples/slurm/
+!examples/slurm/*.sbatch
+
+# Local preprocessing products
+readers/**/events.tsv
+readers/**/alignmentschildren.json
+readers/**/mfa_input/
+readers/**/mfa_output/
+readers/**/alignments/
+
+# Editors and operating systems
+.DS_Store
+.idea/
+.vscode/

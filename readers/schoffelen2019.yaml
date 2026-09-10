@@ -1,0 +1,40 @@
+# Dataset configuration for Schoffelen 2019 (MOUS)
+# Used by the dataset loader, training/evaluation CLIs, and preprocessing scripts.
+
+name: schoffelen2019
+path_base: ..
+
+# --- Paths ---
+bids_root: data/schoffelen2019
+stim_root: data/schoffelen2019/stimuli/audio_files
+
+# --- MEG acquisition parameters ---
+meg:
+  target_hz: 120.0
+  ref_meg: false          # CTF-275 axial gradiometers; ref_meg=False excludes reference channels
+  n_channels: 272         # Expected number of MEG channels after picking (gradiometers only)
+  picks: "^M[LRZ]"       # Regex on channel names; matches main axial gradiometers
+  exclude:               # Channels to exclude after picking (not common across all subjects)
+    - MRO52               # Present in only ~55/102 subjects
+    - MLC11               # Missing in 7 subjects (A2116–A2124)
+  layout: "CTF-275"      # MNE layout name for sensor positions
+
+# --- Audio parameters ---
+audio:
+  resample_hz: 16000.0
+
+# --- Subject information (for annotation scripts) ---
+subjects:
+  n_subjects: 102         # Auditory subjects only (sub-A*)
+  id_type: str            # subject IDs are strings ("A2002", "A2003", …) in segments_df
+  session_column: session # column in segments_df; set to "0" (MOUS has no repeated sessions)
+  task_column: task       # column in segments_df; value is "auditory"
+  run_column: run         # some subjects have run=1 or run=2 (acquisition software crash)
+
+# --- Conditions to extract (null = all) ---
+conditions:               # Not read from config; all conditions are extracted from events annotations
+  - sentence
+  - wordlist
+
+# --- Cache subfolder (relative to the base cache dir ./cache/) ---
+cache_subdir: schoffelen2019

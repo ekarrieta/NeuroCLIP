@@ -1,0 +1,36 @@
+# Dataset configuration for Gwilliams 2022 (MEG-MASC)
+# Used by the dataset loader, training/evaluation CLIs, and preprocessing script.
+
+name: gwilliams2022
+path_base: ..
+
+# --- Paths ---
+bids_root: data/gwilliams2022
+stim_root: data/gwilliams2022/stimuli/audio
+
+# --- MEG acquisition parameters ---
+meg:
+  target_hz: 120.0
+  ref_meg: false          # KIT magnetometers; no reference channels to exclude
+  n_channels: 208         # Expected number of MEG channels after picking
+  picks: null             # Default: mne.pick_types(meg=True, ref_meg=False) → 208 ch
+  exclude: []             # No channels to exclude
+  layout: "KIT-AD"       # MNE layout name for sensor positions
+
+# --- Audio parameters ---
+audio:
+  resample_hz: 16000.0
+
+# --- Subject information (for annotation scripts) ---
+subjects:
+  n_subjects: 27
+  id_type: int            # subject IDs are integers (1–27) in segments_df
+  session_column: session # column name in segments_df (values: "0", "1")
+  task_column: task       # column name in segments_df (values: story names)
+  run_column: null        # no run column for this dataset
+
+# --- Conditions to extract (null = all) ---
+conditions: null          # Not read from config; all conditions are extracted from events annotations
+
+# --- Cache subfolder (relative to the base cache dir ./cache/) ---
+cache_subdir: gwilliams2022
