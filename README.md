@@ -100,33 +100,6 @@ The feature choices are:
 | flipped_wav2vec2 | Time-reversed control for MEG and audio |
 | noise | Gaussian-noise control |
 
-The main training parameters are:
-
-| Option | Meaning | Default |
-| --- | --- | --- |
-| --dataset | gwilliams2022 or schoffelen2019 | gwilliams2022 |
-| --dataset-config | Dataset YAML | readers/<dataset>.yaml |
-| --segments | Precomputed segment TSV | Derived from dataset and length |
-| --bids-root, --stim-root | Override data locations | Dataset YAML |
-| --cache-dir, --output-dir | Generated cache and run roots | cache, checkpoints |
-| --length | Window length in seconds | 3.0 |
-| --model | cnn or conformer | cnn |
-| --feature-type | Target representation listed above | wav2vec2 |
-| --epochs, --early-stop | Maximum epochs and patience | 20, 3 |
-| --learning-rate, --weight-decay | Adam optimizer settings | 3e-4, 0 |
-| --batch-size, --eval-batch-size | Train and retrieval batch sizes | 256, 1000 |
-| --num-workers, --pin-memory | DataLoader settings | 3, automatic |
-| --seed, --device | Reproducibility and PyTorch device | 2036, auto |
-| --dropout | Conformer dropout | 0.2 |
-| --num-layers, --hidden, --num-heads | Conformer dimensions | 6, 320, 8 |
-| --initial-linear, --meg-hidden | Override model YAML widths | Model YAML |
-| --clamp | Normalized MEG clipping limit | 20 |
-| --scaler-meg-samples | Samples fitted per recording | 200 |
-| --scaler-feature-samples | Feature samples used for fitting | 8000 |
-| --scaler-batch-size | Scaler fitting batch size | 16 |
-| --eval-negatives | Sampled negatives per query | Full evaluation batch |
-| --no-final-eval | Skip test retrieval after training | Evaluation enabled |
-| --wav2vec-model, --openai-model | Override upstream model identifiers | See help |
 
 Run python neuroclip.py --help for aliases and the complete generated help.
 
@@ -154,26 +127,6 @@ from the checkpoint:
 Or start from the example configuration:
 
     python eval_model.py --config configs/eval_example.yaml
-
-Evaluation parameters are:
-
-| Option | Meaning | Default |
-| --- | --- | --- |
-| --checkpoint-dir | Directory containing best_model.pth | Required |
-| --dataset, --model, --feature-type, --length | Override checkpoint metadata | Checkpoint |
-| --dataset-config, --segments | Override dataset YAML or segment TSV | Derived |
-| --bids-root, --stim-root, --cache-dir | Override local data paths | Dataset defaults |
-| --split | train, valid, or test | test |
-| --batch-size, --num-workers | Candidate batch and loader workers | 1000, 3 |
-| --negatives | Random negatives per query | Every other batch item |
-| --seed | Negative-sampling seed | 2036 |
-| --shuffle | Shuffle before making candidate batches | Disabled |
-| --output-dir | Result destination | checkpoint/evaluation/<split> |
-| --overwrite | Reuse that destination | New numeric suffix |
-| --device | auto, cpu, cuda, or a CUDA index | auto |
-| architecture options | Manual overrides for legacy checkpoints | Checkpoint |
-| --clamp | Normalized MEG clipping limit | Checkpoint or 20 |
-| feature model options | Override Wav2Vec2/OpenAI identifiers | Checkpoint |
 
 Evaluation writes metrics.json and queries.tsv. Top-1, top-10, mean reciprocal
 rank, and contrastive loss are reported. Duplicate stimulus IDs are treated as
